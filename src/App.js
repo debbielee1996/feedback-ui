@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import FeedbackForm from './components/FeedbackForm'
+import Home from './components/Home'
+import SubmittedFeedback from './components/SubmittedFeedback'
+import Header from './components/Header'
+
+import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import theme from './theme'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <Router>
+      <div className="App">
+        <Header title="Feedback App"/>
+          <Routes>
+            <Route path='/createFeedback' element={<FeedbackForm />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/submittedFeedback' element={<SubmittedFeedback />} />
+          </Routes>
+      </div>
+    </Router>
+    
+    </ThemeProvider>
   );
 }
 
