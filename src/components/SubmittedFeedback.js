@@ -61,7 +61,7 @@ const SubmittedFeedback = () => {
                 currentFeedback={currentFeedback}
                 updateFeedback={updateFeedback}
             />
-            <Typography variant="h4" gutterbottom='true'>Submitted feedback</Typography>
+            <Typography variant="h5" gutterbottom='true'>Past submissions</Typography>
             <Table size="small">
                 <TableHead>
                     <TableRow>

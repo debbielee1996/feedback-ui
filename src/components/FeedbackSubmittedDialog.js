@@ -1,5 +1,6 @@
 import { Modal, Box, Typography, Button } from '@mui/material'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const FeedbackSubmittedDialog = (props) => {
     const style = {
@@ -36,7 +37,8 @@ const FeedbackSubmittedDialog = (props) => {
                     <Typography variant="h6" component="h2" gutterBottom>
                         Your feedback has been submitted! 
                     </Typography>
-                    <CheckCircleOutlineIcon style={style.largeIcon}/>
+                    {props.isSuccessfulSubmission ? <CheckCircleOutlineIcon style={style.largeIcon}/> : <CancelOutlinedIcon style={style.largeIcon}/>}
+                    
                     <Button 
                         onClick={props.closeFeedbackSubmittedDialog}
                         variant="contained"

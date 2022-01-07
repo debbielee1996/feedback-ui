@@ -8,13 +8,15 @@ const FeedbackForm = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const [isSuccessfulSubmission, setIsSuccessfulSubmission] = useState(false)
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        setIsDialogOpen(true)
         FeedbackService.createFeedback(title, description, rating, 1)
             .then(res => {
+                setIsDialogOpen(true)
+                setIsSuccessfulSubmission(true)
                 console.log(res)
             })
             .catch(err => {
@@ -28,9 +30,13 @@ const FeedbackForm = () => {
 
     return (
         <div>
-            <FeedbackSubmittedDialog isDialogOpen={isDialogOpen} closeFeedbackSubmittedDialog={closeFeedbackSubmittedDialog}/>
+            <FeedbackSubmittedDialog 
+                isDialogOpen={isDialogOpen}
+                closeFeedbackSubmittedDialog={closeFeedbackSubmittedDialog}
+                isSuccessfulSubmission={isSuccessfulSubmission}
+            />
             
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h5" gutterBottom>
                 Your feedback helps us to improve.
             </Typography>
 
@@ -41,7 +47,7 @@ const FeedbackForm = () => {
                         <Rating 
                             name="rating"
                             label="rating"
-                            defaultValue={0}
+                            defaultValue={1}
                             precision={1}
                             size="large"
                             value={rating.number}
@@ -66,11 +72,10 @@ const FeedbackForm = () => {
                             name="description"
                             label="description"
                             fullWidth
-                            multiline
-                            rows={10}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                        />
+                            inputProps={{ minLength: 3 }}
+                            />
                     </Grid>
                     <Grid item xs={12}>
                     <Button

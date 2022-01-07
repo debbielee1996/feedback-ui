@@ -8,12 +8,10 @@ class FeedbackService {
         formData.append('rating', rating)
         formData.append('personId', personId)
 
-        const response = await fetch(settings.baseUrl+'/feedback/createFeedback', {
+        return fetch(settings.baseUrl+'/feedback/createFeedback', {
             method: 'POST',
             body: formData
         })
-        const data = await response.text()
-        return data
     }
     
     async getAllFeedback(personId) {

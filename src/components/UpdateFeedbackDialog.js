@@ -55,7 +55,7 @@ const UpdateFeedbackDialog = (props) => {
                         <Rating 
                             name="rating"
                             label="rating"
-                            defaultValue={props.currentFeedback ? props.currentFeedback.rating : 0}
+                            defaultValue={props.currentFeedback ? props.currentFeedback.rating : 1}
                             precision={1}
                             size="large"
                             value={rating.number}
@@ -80,10 +80,9 @@ const UpdateFeedbackDialog = (props) => {
                             name="description"
                             label="description"
                             fullWidth
-                            multiline
-                            rows={10}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
+                            inputProps={{ minLength: 3 }}
                         />
                     </Grid>
                     <Grid item xs={12}>

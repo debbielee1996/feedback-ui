@@ -1,11 +1,11 @@
 import { AppBar, Typography, Toolbar } from '@mui/material'
-
+import ChatIcon from '@mui/icons-material/Chat'
 
 const Header = (props) => {
     return (
         <AppBar position="relative">
             <Toolbar>
-                <Typography variant="h6">{props.title}</Typography>
+                <ChatIcon style={{marginRight:'5px'}}/><Typography variant="h6">{props.title}</Typography>
             </Toolbar>
         </AppBar>
 
